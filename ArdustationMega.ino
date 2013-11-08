@@ -6,6 +6,13 @@
 // Development settings
 #define JDDEV    // development settings for jDrones people
 
+// Custom jDrones defines/valiables
+#ifdef JDDEV
+#define VER "0.6"
+
+
+
+#endif
 
 
 // AVR runtime
@@ -151,8 +158,13 @@ void setup() {
 	// Initialise the display driver object
 	GLCD.Init(NON_INVERTED);
 
-    // load the NVRAM
-    nvram.load();
+        // load the NVRAM
+        nvram.load();
+
+#ifdef JDDEV       
+        // Initialize ASM splashscreen
+        init_ASM();
+#endif
 
 	// Print the welcome message
 	//lcd.print("Starting up");
